@@ -18,6 +18,10 @@ class Calculator():
     dokumentacja modułu
     """
     def buttonClick(self):
+        """
+        metoda buttonclick operatory działan i buttony num
+        :return:
+        """
         global operator
         self.operator = self.operator + str(self.numbers)
         self.textInput.set(self.operator)
