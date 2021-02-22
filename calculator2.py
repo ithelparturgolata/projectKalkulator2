@@ -57,7 +57,10 @@ class Calculator():
            :raises ValueError:
         """
         global operator
-        self.total = str(eval(self.operator))
+        try:
+            self.total = str(eval(self.operator))
+        except ZeroDivisionError:
+            messagebox.showwarning("Uwaga", "Nie dzielimy przez 0")
         self.textInput.set(self.total)
         self.operator = ""
 
@@ -110,20 +113,20 @@ class Calculator():
         self.button3 = Button(self.root, text = "3", width = "4", height = "2", activebackground = "yellow", font = self.font, anchor = "center", command = lambda: self.buttonClick(3))
         self.button3.place(x=120, y=120)
 
-        self.buttonEqual = Button(self.root, text = "=", width = "4", height = "2", activebackground = "yellow", command = lambda: self.buttonEquals, font = self.font, anchor = "center")
+        self.buttonEqual = Button(self.root, text = "=", width = "4", height = "2", activebackground = "yellow", command = self.buttonEquals, font = self.font, anchor = "center")
         self.buttonEqual.place(x=120, y=160)
 
-        self.button9 = Button(self.root, text = "+", width = "4", height = "2", activebackground = "yellow", command = lambda: self.buttonClick("+"), font = self.font, anchor = "center")
-        self.button9.place(x = 160, y = 40)
+        self.buttonadd = Button(self.root, text = "+", width = "4", height = "2", activebackground = "yellow", command = lambda: self.buttonClick("+"), font = self.font, anchor = "center")
+        self.buttonadd.place(x = 160, y = 40)
 
-        self.button6 = Button(self.root, text = "-", width = "4", height = "2", activebackground = "yellow", command = lambda: self.buttonClick("-"), font = self.font, anchor = "center")
-        self.button6.place(x=160, y=80)
+        self.buttonsub = Button(self.root, text = "-", width = "4", height = "2", activebackground = "yellow", command = lambda: self.buttonClick("-"), font = self.font, anchor = "center")
+        self.buttonsub.place(x=160, y=80)
 
-        self.button3 = Button(self.root, text = "*", width = "4", height = "2", activebackground = "yellow", command = lambda: self.buttonClick("*"), font = self.font, anchor = "center")
-        self.button3.place(x=160, y=120)
+        self.buttonmul = Button(self.root, text = "*", width = "4", height = "2", activebackground = "yellow", command = lambda: self.buttonClick("*"), font = self.font, anchor = "center")
+        self.buttonmul.place(x=160, y=120)
 
-        self.buttonEqual = Button(self.root, text = "/", width = "4", height = "2", activebackground = "yellow", command=lambda:self.buttonClick("/"), font = self.font, anchor = "center")
-        self.buttonEqual.place(x=160, y=160)
+        self.buttondiv = Button(self.root, text = "/", width = "4", height = "2", activebackground = "yellow", command=lambda:self.buttonClick("/"), font = self.font, anchor = "center")
+        self.buttondiv.place(x=160, y=160)
 
 
         self.root.mainloop()
